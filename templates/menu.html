@@ -1,0 +1,39 @@
+{% load i18n predict_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+{% url 'predict:list' as model_list %}
+
+<div class="header_w3l">
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<h1><a href="{% pageurl site_root %}">Predict <span>Cancer</span></a></h1>
+			</div>
+            <!-- top-nav -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+                     <!-- Fixed urls -->
+                    <li><a href="{% pageurl site_root %}" {% ifequal site_root request.path %} class="active"{% endifequal %}>Home</a></li>
+                    <li><a href="{% url 'predict:list' %}" {% ifequal model_list request.path %} class="active"{% endifequal %}>{% trans 'Models' %}</a></li>
+                    <!-- CMS urls -->
+                    {% for menuitem in menuitems %}
+                        <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
+                            {% if menuitem.show_dropdown %}
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }} <b class="caret"></b></a>
+                                {% menu_children parent=menuitem %}
+                            {% else %}
+                                <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+				</ul>
+				<div class="clearfix"> </div>
+			</div>
+		</nav>
+	</div>
+</div>

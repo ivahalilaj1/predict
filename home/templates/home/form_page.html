@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load static wagtailcore_tags widget_tweaks %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+<br>
+  <hr class="mt-0 mb-4">
+<br>
+<div class="col-xs-10 col-sm-2">
+</div>
+<div class="col-xs-10 col-sm-7">
+<center>
+  <h3 style="color:#00d2d4";>Send a Message</h3>
+
+<form action="{% pageurl page %}" method="POST">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger" role="alert">
+        {% for error in form.non_field_errors %}
+          {{ error }}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% for field in form.visible_fields %}
+      <div class="form-group">
+        {{ field.label_tag }}
+        {% render_field field class+="form-control" %}
+      </div>
+    {% endfor %}
+
+  <button type="submit"  class="btn btn-info" style= "border-radius:20px;" >Submit &#8594;</button>
+</form>
+<div>
+  <br>
+</div>
+  <hr class="mt-0 mb-4">
+  <H4 class="contact100-more" style="color:#f54785";>
+        <i class="fa fa-map-marker" style="font-size:24px"></i>
+        Oxfordlaan 70, 6229 EV Maastricht <span class="contact100-more-highlight"></span>
+      </H4>
+
+</center>
+</div>
+{% endblock %}

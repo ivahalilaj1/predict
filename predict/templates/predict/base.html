@@ -1,0 +1,126 @@
+{% load predict_tags bootstrap3 i18n staticfiles wagtailuserbar %}
+{% load bootstrap3 %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+
+        <meta name="description" content="{% spaceless %}{% block description %}{% endblock %}{% endspaceless %}">
+        <meta name="viewport"
+              content="{% block viewport %}width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no{% endblock %}">
+        {% block extrameta %}{% endblock %}
+
+        <!-- //for-mobile-apps -->
+        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <!--animate-->
+        <link href="{% static 'css/animate.css' %}" rel="stylesheet" type="text/css" media="all">
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <script type="text/javascript">
+                 new WOW().init();
+        </script>
+        <!--//end-animate-->
+        <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+        {# Load CSS and JavaScript #}
+        {% block extrastyle %}{% endblock %}
+        {% bootstrap_javascript %}
+        <!-- start-smooth-scrolling -->
+        <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $(".scroll").click(function(event){
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                });
+            });
+        </script>
+        <!-- start-smooth-scrolling -->
+        <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+
+        {% block blockbots %}
+            <meta name="robots" content="NONE,NOARCHIVE"/>
+        {% endblock %}
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/predictsite.css' %}">
+        <style type="text/css">
+            html {
+              position: relative;
+              min-height: 100%;
+            }
+            body {
+              /* Margin bottom by footer height */
+              margin-bottom: 200px;
+            }
+            .footer {
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+              /* Set the fixed height of the footer here */
+              height: 200px;
+              background-color: #f5f5f5;
+            }
+        </style>
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+
+    </head>
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %}
+
+        {% block menu %}
+            {% get_site_root as site_root %}
+            {% menu parent=site_root calling_page=self %}
+        {% endblock %}
+
+        {# hack to prevent home page being wrapped in container class #}
+        {% ifnotequal request.path "/" %}
+        <div class="container">
+            <div class="mb-60">
+        {% endifnotequal %}
+
+            {% block content %}{% endblock %}
+
+        {# hack to prevent home page being wrapped in container class #}
+        {% ifnotequal request.path "/" %}
+            </div>
+        </div>
+        {% endifnotequal %}
+
+        <footer class="footer">
+            <div class="contact_w3agile">
+                <div class="container">
+                    <p class="agileinfo">&copy; Copyright 2010-2018 PredictCancer.org | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+                </div>
+            </div>
+        </footer>
+
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/predictsite.js' %}"></script>
+
+        <!-- smooth scrolling -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $().UItoTop({ easingType: 'easeOutQuart' });
+            });
+        </script>
+        <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+        <!-- //smooth scrolling -->
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

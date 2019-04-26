@@ -1,0 +1,56 @@
+<div class="banner_w3ls w3layouts">
+    <script type="text/javascript">
+        // You can also use "$(window).load(function() {"
+        $(function () {
+         // Slideshow 4
+        $("#slider3").responsiveSlides({
+            auto: true,
+            pager: true,
+            nav: true,
+            speed: 500,
+            namespace: "callbacks",
+            before: function () {
+        $('.events').append("<li>before event fired.</li>");
+        },
+        after: function () {
+            $('.events').append("<li>after event fired.</li>");
+            }
+            });
+        });
+    </script>
+        <div  id="top" class="callbacks_container">
+            <ul class="rslides" id="slider3">
+                {% if self.heading_1 %}
+                <li>
+                    <div class="banner-info w3">
+                        <div class="banner-text w3l">
+                            <h3>{{ self.heading_1 }}</h3>
+                            <p>{{ self.paragraph_1 }}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+                {% if self.heading_2 %}
+                <li>
+                    <div class="banner-info w3ls">
+                        <div class="banner-text agileits">
+                            <h3>{{ self.heading_2 }}</h3>
+                            <p>{{ self.paragraph_2 }}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+                {% if self.heading_3 %}
+                <li>
+                    <div class="banner-info agileinfo">
+                        <div class="banner-text wthree">
+                            <h3>{{ self.heading_3 }}</h3>
+                            <p>{{ self.paragraph_3 }}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+</div>

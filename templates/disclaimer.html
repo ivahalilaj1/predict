@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<br><hr><br><br>
+<div style="border: solid 2px #f54785;">
+   <div class="ui-dialog ui-widget ui-widget-content ui-corner-all" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-dialog10" style="overflow-y: scroll;" style="display: block; position: absolute; overflow: hidden; z-index: 1002; outline: 0px; height: auto; width: 750px; top: 276.5px; left: 582px;">
+<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" unselectable="on"><span class="ui-dialog-title" id="ui-dialog-title-dialog10" unselectable="on"><b><div style="padding:10px; background-color:#f7aec8;">Disclaimer</div></b></span>
+<a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on" style="display: none;"><span class="ui-icon ui-icon-closethick" unselectable="on">close</span></a></div><div id="dialog10" class="ui-dialog-content ui-widget-content" style="height: 388px; min-height: 38px; width: auto;">
+<p>This automatic segmentation software can only be used on:</p><br>
+-	Open source images that are fully anonymized (e.g. images from http://www.cancerimagingarchive.net/) and<br>
+-	Images that have been cleared by an ethical committee and<br>
+-	Images used or non commercial research purpose only.<br>
+
+<p>The automatic segmentation software available on this website is not regarded as medical devices under the current MEDDEV guidelines from the European Commission or the FDA.
+ This software is not a public domain software and may not be sold or used for commercial purposes (nor the software, nor any service using this software).
+Permission to use and backup this software for any non-commercial, academic purpose, without fee, and without a written agreement is hereby granted.
+Permission to distribute this software for any non-commercial purpose, without fee, and without a written agreement is not granted.
+The authors have made every effort to ensure that the information provided by this software is accurate and conforms to state of the art methods.
+However, the segmentation which are estimated with this software may differ from those found in current clinical practice. In addition, a patient's prognosis may depend on other factors than those taken into account here.
+Thus, any decisions concerning patient care should not be based only on the use of this software. The creators of the PredictCancer website are not liable for clinical decision making (formally forbidden) that occurs between a physician and a patient.
+As medical science is constantly changing and human error is always possible, the information contained in this tools may be outdated, incomplete or incorrect.
+The authors, ptTheragnostic and Maastricht University do not warrant the software accuracy nor are they responsible for any omissions, errors or outcomes resulting from the use of this software.
+In no event shall either the authors, ptTheragnostic or Maastricht University be liable to any party for any direct, indirect, special, incidental, or consequential damages, including lost profits,
+arising from the use of this software even if they have been advised of the possibility of such damage.
+The authors, ptTheragnostic and Maastricht University clinic specifically disclaim any warranties, including but not limited to, the implied warranty of fitness for calculating the probabilities of outcomes for patients.
+The software provided hereunder is on an as is basis and neither the authors, ptTheragnostic nor the Maastricht University have any obligations to provide maintenance, support, updates, enhancements or modifications.
+The images uploaded may be kept in a separate database manage by the authors of the website. If a user find that an automatically generated contour is not correct, the creator of the website would appreciate a feed back with a reference to the image: an email can be sent to info@pttheragnostic.com. This information will allow to improve the next version of the software. If requested, there are commercial version of the software available allowing batch analysis and volumetric calculations.
+</p>
+<p>By proceeding with use of the models, the user agrees that they have read and agreed with these terms.</p></div></div> </div>
+     <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+       <div>
+ <button type="button" class="btn btn-secondary" style="float: right; " onclick="window.location.href='/model/list/'">I Disagree</button>
+  <button type="button" class="btn btn-primary" style="float: right;" onclick="window.location.href='/sergeymodel'">I Agree</button></div>
+       </div>
+{% endblock %}

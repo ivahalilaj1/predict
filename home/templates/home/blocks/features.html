@@ -1,0 +1,93 @@
+{% load static %}
+
+{% if self.feature_1 %}
+<div class="features_w3 agileits">
+    <div class="container">
+        <h3 class="title">{% if self.title %}{{ self.title }}{% endif %}</h3>
+        <div class="fea_grids w3ls">
+            <div class="col-md-6 fea_grid1">
+                <div class="col-sm-4 fea_left text-center w3ls">
+                    <div class="ih-item circle effect1">
+                        <a href="#">
+                            <div class="spinner"></div>
+                            <div class="img"><img src="{% static 'images/icon1.png' %}" alt="img"></div>
+                                <div class="info">
+                                  <div class="info-back">
+
+                                  </div>
+                                </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-8 fea_right agileinfo">
+                    <h4>{{ self.feature_1 }}</h4>
+                    <p>{{ self.paragraph_1 }}</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-6 fea_grid2">
+                <div class="col-sm-8 fea_right fea_two w3-agileits">
+                    <h4>{{ self.feature_2 }}</h4>
+                    <p>{{ self.paragraph_2 }}</p>
+                </div>
+                <div class="col-sm-4 fea_left fea_one text-center w3layouts">
+                    <div class="ih-item circle effect1">
+                        <a href="#">
+                            <div class="spinner"></div>
+                            <div class="img"><img src="{% static 'images/icon2.png' %}" alt="img"></div>
+                                <div class="info">
+                                  <div class="info-back">
+
+                                  </div>
+                                </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-6 fea_grid1 fea_bor w3-agileits">
+                <div class="col-sm-4 fea_left text-center">
+                    <div class="ih-item circle effect1">
+                        <a href="#">
+                            <div class="spinner"></div>
+                            <div class="img"><img src="{% static 'images/icon3.png' %}" alt="img"></div>
+                                <div class="info">
+                                  <div class="info-back">
+
+                                  </div>
+                                </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-8 fea_right agileits-w3layouts">
+                    <h4>{{ self.feature_3 }}</h4>
+                    <p>{{ self.paragraph_3 }}</p>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-6 fea_grid2 fea_bor w3">
+                <div class="col-sm-8 fea_right fea_one w3l">
+                    <h4>{{ self.feature_4 }}</h4>
+                    <p>{{ self.paragraph_4 }}</p>
+                </div>
+                <div class="col-sm-4 fea_left fea_two text-center w3-agileits">
+                    <div class="ih-item circle effect1">
+                        <a href="#">
+                            <div class="spinner"></div>
+                            <div class="img"><img src="{% static 'images/icon4.png' %}" alt="img"></div>
+                                <div class="info">
+                                  <div class="info-back">
+
+                                  </div>
+                                </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+{% endif %}

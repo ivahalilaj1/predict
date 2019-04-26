@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if data_list %}
+
+    {% for predictmodel in data_list %}
+
+    <ul>
+
+    <li>
+    <div class="col-xs-10 col-sm-2">
+    </div>
+    <div class="col-xs-10 col-sm-7">
+        <h4> Email:{{ predictmodel.email }}</h4><br>
+        <h2> Submitter:${{ predictmodel.submitter }}</h2>
+        <h2> Name:{{ predictmodel.name }}</h2>
+        <h2> Desc:{{ predictmodel.description }}</h2>
+        <h2> References:{{ predictmodel.references }}</h2>
+        <h2> Model type:{{ predictmodel.model_type }}</h2>
+        <h2> Constant:{{ predictmodel.constant }}</h2>
+        <h2> ScoreTemplate:{{ predictmodel.score_template }}</h2>
+        <h2> Categories:{{ predictmodel.categories }} </h2>
+        <h2> Tags:{{ predictmodel.tags }} </h2>
+
+
+           <form action="{% url 'predict:predictmodel-delete' predict.id %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-default btn-sm">Delete</button>
+           </form>
+           <form action="{% url 'predict:predictmodel-update' predict.id  %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Save</button>
+           </form>
+        <h2> CATEGORICAL REGRESSION VARIABLES: </h2>
+        <h2> Coefficient{{ predict-categoricalregressionvariable.coefficient }} </h2>
+        <h2> Min:{{ continuousregressionvariables.min }} </h2>
+           <form action="{% url 'predict:predict-categoricalregressionvariable-delete' predict.id %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-default btn-sm">Delete</button>
+           </form>
+           <form action="{% url 'predict:predictmodel-update' predict.id  %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Save</button>
+           </form>
+    <div>
+    </li>
+    </ul>
+{% endfor %}
+
+    {% else %}
+
+    <center>
+      <hr>
+      <br><br>
+    <h2>Insert your models here!</h2><br><br>
+    </center>
+
+{% endif %}
+     <center>
+     <form action="{% url 'predict:predictmodel-entry'  %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-info" style="border-radius:20px;">Submit Your Model →</button>
+            <br><br>
+            <h2>Thank you for your contribute!</h2>
+     </form>
+     </center>
+{% endblock %}
+</div>

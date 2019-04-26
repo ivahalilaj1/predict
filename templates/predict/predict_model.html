@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+
+        <h1>{{ predict_model.name }}</h1>
+        <div>
+            {{ predict_model.description|linebreaksbr }}
+        </div>
+
+        <h2>Model Calculation</h2>
+
+        <form id="predict_model_form" class="form" method="post">
+            {% csrf_token %}
+
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button class="button primary" class="btn btn-primary" name="save" id="btn-predict-model-calculate" type="submit">
+                    {% bootstrap_icon "star" %} {% trans 'Calculate' %}
+                </button>
+            {% endbuttons %}
+        </form>
+
+        {% if model_score %}
+        <div>
+            {{ score_output }}
+        </div>
+        {% endif %}
+
+        {% if predict_model.references %}
+        <h2>Journal articles that support this prediction tool</h2>
+        <div>
+            {{ predict_model.references|linebreaksbr }}
+        </div>
+        {% endif %}
+     </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-contentpage{% endblock %}
+
+{% block content %}
+    {% include_block self.body %}
+{% endblock %}

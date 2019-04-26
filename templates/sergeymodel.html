@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <br><hr><br>
+    <center>
+    <div>
+    <h2 style="color:#00d2d4;">Insert the images here!</h2><br>
+    <input class="btn btn-primary btn-sm float-left" type="file" name="myfile"><br>
+     <button class="btn-floating purple-gradient mt-0 float-left" type="submit" title="Choose an image">
+    <i class="fa fa-paperclip" aria-hidden="true"></i>Upload</button>
+    </div>
+    <br><hr><br>
+    <a href="select_image">If you don't have any image, you can choose one!</a>
+    <a href="{% url 'predict:select_image'%}"
+    </center>
+  </form>
+
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+    {% endif %}
+  {% if path %}
+
+  <img src="/static/images/tmp/image_and_predicted_mask.jpg" width="1024" height="512"><br>
+<hr>
+  <h3 align="center">Thank you for your contribute!</h3>
+<br>
+{% endif %}
+
+{% endblock %}

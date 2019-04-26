@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap_dynamic_formsets %}
+
+{% block extrastyle %}
+<center>
+   <script src="{% static "js/jquery.min.js" %}"></script>
+   <script src="{% static "js/jquery.formset.js" %}"></script>
+   <script type="text/javascript">
+       $(function() {
+           {% for inline in inlines %}
+               $(".inline.{{ inline.prefix }}").formset({
+                   prefix: "{{ inline.prefix }}",
+               });
+           {% endfor %}
+       })
+    </script>
+{% endblock %}
+
+{% block content %}
+<hr>
+
+    <h3 style="color:#f54785;">Submit your model by filling this form!</h3><br>
+    <div class="col-xs-10 col-sm-1">
+    </div>
+    <div class="col-xs-10 col-sm-10" style="border: solid 1px #00d2d4;">
+    <form action="." method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.as_p }}
+        </div>
+        {% for inline_form in inlines %}
+        <fieldset>
+            <legend>Variables</legend>
+            {{ inline_form.non_form_errors }}
+            {{ inline_form.id }}
+            <div class="inline {{ inline_form.prefix }}">
+                    {{ inline_form.errors }}
+                    {{ inline_form.as_p }}
+            </div>
+        </fieldset>
+        {% endfor %}
+        <br>
+        <input type="submit" class="btn btn-primary mb1 bg-purple" value="Submit Model Proposal" class="submit" />
+    </form>
+    </div>
+ </center>
+<hr>
+{% endblock %}

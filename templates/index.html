@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content_inner %}
+    <div class="jumbotron vertical-center">
+        <h1>PredictCancer</h1>
+        <p>The purpose of PredictCancer.org is to give information to physicians and health professionals about the
+            risks and benefits of cancer treatment, in terms of side-effects, response and follow-up outcomes such as
+            local recurrences and survival.</p>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Last update: 2017-02-24</h3>
+        </div>
+        <div class="panel-body">
+            New model for brain metastases that predicts early death (within 3 months) and long term
+            survival (more than 1 year) probability after stereotactic radiosurgery (SRS) for brain metastases (BMs) of
+            non-small cell lung cancer (NSCLC).
+        </div>
+    </div>
+
+
+    <div class="row">
+        <p>
+            The purpose of PredictCancer.org is to give information to physicians and health professionals about the
+            risks and
+            benefits of cancer treatment, in terms of side-effects, response and follow-up outcomes such as local
+            recurrences
+            and survival.
+            Intended use of the PredictCancer.org
+        </p>
+
+        <p>
+            The prediction models are to be used to supplement, not substitute for, clinical judgment. These models
+            should only
+            be used by physicians who are familiar with the complexity of treatment decisions in cancer treatment and
+            should not
+            be used directly by patients. If you are a patient and would like to obtain an individualized prediction for
+            your
+            specific situation, it is suggested that you ask your health care professional to obtain this prediction and
+            go over
+            the results with you.
+        </p>
+
+        <p>
+            If you are interested in publishing your model on our website, you can find information about the procedure
+            and the
+            requirements in the section "Submit models"
+
+            If you have any remarks, suggestions or questions please don't hesitate to contact us by e-mail.
+        </p>
+
+    </div>
+{% endblock %}
